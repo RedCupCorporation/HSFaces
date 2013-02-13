@@ -1,11 +1,3 @@
-//
-//  ViewController.m
-//  HackerSchool
-//
-//  Created by Adam Fraser on 13/02/13.
-//  Copyright (c) 2013 Adam Fraser. All rights reserved.
-//
-
 #import "ViewController.h"
 
 @interface ViewController ()
@@ -14,16 +6,28 @@
 
 @implementation ViewController
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    [_webView setBackgroundColor:[UIColor redColor]];
+    _webView.delegate = self;
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.hackerschool.com/private"] cachePolicy:NSURLCacheStorageAllowed timeoutInterval:60];
+    [_webView loadRequest:request];
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)webViewDidStartLoad:(UIWebView *)webView {
+    _spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    _spinner.frame = CGRectMake(360/2, 480/2, 40, 40);
+    [self.view addSubview:_spinner];
+    [_spinner startAnimating];
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView {
+    [_spinner stopAnimating];
+    NSLog(@"%@",[_webView stringByEvaluatingJavaScriptFromString:@"document.body.innerHTML"]);
+}
+
+- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 @end
