@@ -7,21 +7,8 @@
 - (Parser *)init {
     NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://www.hackerschool.com/private"]];
     TFHpple *doc = [[TFHpple alloc] initWithHTMLData:data];
-
-//    NSArray *batches = [doc searchWithXPathQuery:@"//ul[@id='batches']/li/h2"];
-//    for (TFHppleElement *batch in batches) {
-//        NSLog(@"%@", [[batch firstChild] content]);
-//    }
-
-//    NSArray *people = [doc searchWithXPathQuery:@"//ul[@id='batches']/li/ul/li[@class='person']/div[@class='name']/a"];
-//    for (TFHppleElement *person in people) {
-//        NSLog(@"%@", [[person firstChild] content]);
-//    }
-
-//    NSArray *images = [doc searchWithXPathQuery:@"//ul[@id='batches']/li/ul/li[@class='person']/a/img"];
-//    for (TFHppleElement *image in images) {
-//        NSLog(@"%@", [(NSDictionary *)[image attributes] objectForKey:@"src"]);
-//    }
+    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    NSManagedObjectContext *objectContext = [appDelegate managedObjectContext];
 
     NSArray *batchIds = [doc searchWithXPathQuery:@"//ul[@id='batches']/li/ul"];
     for (TFHppleElement *batchID in batchIds) {
@@ -31,25 +18,16 @@
 
         NSLog(@"%@", idName);
         for (int i = 0; i < [peopleFromBatch count]; i++) {
-            NSLog(@"%@", [(NSDictionary *)[[imagesFromBatch objectAtIndex:i] attributes] objectForKey:@"src"]);
-            NSLog(@"%@", [[[peopleFromBatch objectAtIndex:i] firstChild] content]);
+            NSString *image = [(NSDictionary *)[[imagesFromBatch objectAtIndex:i] attributes] objectForKey:@"src"];
+            NSString *name = [[[peopleFromBatch objectAtIndex:i] firstChild] content];
+            Person *newPerson = [NSEntityDescription insertNewObjectForEntityForName:@"Person" inManagedObjectContext:objectContext];
+            [newPerson setName:name];
+            [newPerson setImage:image];
+            [newPerson setBatch:idName];
+            NSError *error = nil;
+            [objectContext save:&error];
         }
-
-//        NSLog(@"%@", idName);
-//        for (TFHppleElement *name in peopleFromBatch) {
-//            NSLog(@"%@", name);
-//            NSLog(@"%@", [[name firstChild] content]);
-//        }
     }
-
-//    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
-//
-//    NSManagedObjectContext *objectContext = [appDelegate managedObjectContext];
-//    Person *newPerson = [NSEntityDescription insertNewObjectForEntityForName:@"Person" inManagedObjectContext:objectContext];
-//    [newPerson setName:@""];
-//    [newPerson setBatch:@""];
-//    [newPerson setImage:@""];
-//
     return nil;
 }
 
