@@ -1,4 +1,5 @@
 #import "ViewController.h"
+#import "Parser.h"
 
 @interface ViewController ()
 
@@ -12,6 +13,7 @@
     _webView.delegate = self;
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.hackerschool.com/private"] cachePolicy:NSURLCacheStorageAllowed timeoutInterval:60];
     [_webView loadRequest:request];
+    Parser *paser = [[Parser alloc] init];
 }
 
 - (void)webViewDidStartLoad:(UIWebView *)webView {
@@ -23,7 +25,6 @@
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
     [_spinner stopAnimating];
-    NSLog(@"%@",[_webView stringByEvaluatingJavaScriptFromString:@"document.body.innerHTML"]);
 }
 
 - (void)didReceiveMemoryWarning {
