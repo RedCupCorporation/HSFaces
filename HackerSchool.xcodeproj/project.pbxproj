@@ -27,6 +27,7 @@
 		66F8414B16CC4ED300CA98B6 /* HackerSchool.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 66F8414916CC4ED300CA98B6 /* HackerSchool.xcdatamodeld */; };
 		66F8414E16CC50F500CA98B6 /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 66F8414D16CC50F500CA98B6 /* Person.m */; };
 		66F841A016CC567F00CA98B6 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66F8419F16CC567F00CA98B6 /* CoreData.framework */; };
+		66F841A316CD894B00CA98B6 /* Batch.m in Sources */ = {isa = PBXBuildFile; fileRef = 66F841A216CD894A00CA98B6 /* Batch.m */; };
 		C0CB9A9267224737B53099AB /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 136E0B5B4F3A44DAB956DCBD /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -71,6 +72,8 @@
 		66F8414C16CC50F500CA98B6 /* Person.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Person.h; sourceTree = "<group>"; };
 		66F8414D16CC50F500CA98B6 /* Person.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Person.m; sourceTree = "<group>"; };
 		66F8419F16CC567F00CA98B6 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		66F841A116CD894A00CA98B6 /* Batch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Batch.h; sourceTree = "<group>"; };
+		66F841A216CD894A00CA98B6 /* Batch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Batch.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +144,8 @@
 				662969A916CC20090058F30A /* MainStoryboard.storyboard */,
 				662969AC16CC20090058F30A /* ViewController.h */,
 				662969AD16CC20090058F30A /* ViewController.m */,
+				66F841A116CD894A00CA98B6 /* Batch.h */,
+				66F841A216CD894A00CA98B6 /* Batch.m */,
 				662969CC16CC2C150058F30A /* Parser.h */,
 				662969CD16CC2C150058F30A /* Parser.m */,
 				66F8414C16CC50F500CA98B6 /* Person.h */,
@@ -314,6 +319,7 @@
 				662969CE16CC2C150058F30A /* Parser.m in Sources */,
 				66F8414B16CC4ED300CA98B6 /* HackerSchool.xcdatamodeld in Sources */,
 				66F8414E16CC50F500CA98B6 /* Person.m in Sources */,
+				66F841A316CD894B00CA98B6 /* Batch.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
