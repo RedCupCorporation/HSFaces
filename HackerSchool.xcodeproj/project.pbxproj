@@ -28,6 +28,9 @@
 		66F8414E16CC50F500CA98B6 /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 66F8414D16CC50F500CA98B6 /* Person.m */; };
 		66F841A016CC567F00CA98B6 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66F8419F16CC567F00CA98B6 /* CoreData.framework */; };
 		66F841A316CD894B00CA98B6 /* Batch.m in Sources */ = {isa = PBXBuildFile; fileRef = 66F841A216CD894A00CA98B6 /* Batch.m */; };
+		66F841A516CD8C6900CA98B6 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 66F841A416CD8C6900CA98B6 /* logo.png */; };
+		66F841A916CD8D5700CA98B6 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66F841A816CD8D5700CA98B6 /* LoginViewController.m */; };
+		66F841AC16CDA83700CA98B6 /* DisplayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66F841AB16CDA83600CA98B6 /* DisplayViewController.m */; };
 		C0CB9A9267224737B53099AB /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 136E0B5B4F3A44DAB956DCBD /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -74,6 +77,11 @@
 		66F8419F16CC567F00CA98B6 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		66F841A116CD894A00CA98B6 /* Batch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Batch.h; sourceTree = "<group>"; };
 		66F841A216CD894A00CA98B6 /* Batch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Batch.m; sourceTree = "<group>"; };
+		66F841A416CD8C6900CA98B6 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
+		66F841A716CD8D5700CA98B6 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		66F841A816CD8D5700CA98B6 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		66F841AA16CDA83600CA98B6 /* DisplayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DisplayViewController.h; sourceTree = "<group>"; };
+		66F841AB16CDA83600CA98B6 /* DisplayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DisplayViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +150,10 @@
 				662969A016CC20090058F30A /* AppDelegate.h */,
 				662969A116CC20090058F30A /* AppDelegate.m */,
 				662969A916CC20090058F30A /* MainStoryboard.storyboard */,
+				66F841AA16CDA83600CA98B6 /* DisplayViewController.h */,
+				66F841AB16CDA83600CA98B6 /* DisplayViewController.m */,
+				66F841A716CD8D5700CA98B6 /* LoginViewController.h */,
+				66F841A816CD8D5700CA98B6 /* LoginViewController.m */,
 				662969AC16CC20090058F30A /* ViewController.h */,
 				662969AD16CC20090058F30A /* ViewController.m */,
 				66F841A116CD894A00CA98B6 /* Batch.h */,
@@ -159,6 +171,7 @@
 			isa = PBXGroup;
 			children = (
 				6629699916CC20090058F30A /* HackerSchool-Info.plist */,
+				66F841A616CD8C7000CA98B6 /* Resources */,
 				6629699A16CC20090058F30A /* InfoPlist.strings */,
 				6629699D16CC20090058F30A /* main.m */,
 				6629699F16CC20090058F30A /* HackerSchool-Prefix.pch */,
@@ -186,6 +199,14 @@
 				662969BE16CC20090058F30A /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		66F841A616CD8C7000CA98B6 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				66F841A416CD8C6900CA98B6 /* logo.png */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -265,6 +286,7 @@
 				662969A616CC20090058F30A /* Default@2x.png in Resources */,
 				662969A816CC20090058F30A /* Default-568h@2x.png in Resources */,
 				662969AB16CC20090058F30A /* MainStoryboard.storyboard in Resources */,
+				66F841A516CD8C6900CA98B6 /* logo.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -320,6 +342,8 @@
 				66F8414B16CC4ED300CA98B6 /* HackerSchool.xcdatamodeld in Sources */,
 				66F8414E16CC50F500CA98B6 /* Person.m in Sources */,
 				66F841A316CD894B00CA98B6 /* Batch.m in Sources */,
+				66F841A916CD8D5700CA98B6 /* LoginViewController.m in Sources */,
+				66F841AC16CDA83700CA98B6 /* DisplayViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

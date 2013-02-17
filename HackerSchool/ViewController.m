@@ -1,6 +1,7 @@
 #import "ViewController.h"
 #import "Parser.h"
 #import "Person.h"
+#import "Batch.h"
 
 @interface ViewController ()
 
@@ -19,13 +20,20 @@
     _objectContext = [appDelegate managedObjectContext];
 }
 
+- (void)reloadtable:(id)sender {
+    [self.fetchedResultsController performFetch:nil];
+    [self.tableView reloadData];
+}
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    Batch *batch = [_fetchedResultsController objectAtIndexPath:[_tableView indexPathForSelectedRow]];
+    [segue.destinationViewController setBatch:batch];
+}
 
 #pragma - mark FetchResultsController Delegate
 
 - (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
     [_tableView beginUpdates];
-    NSLog(@"beginning updates");
 }
 
 - (NSFetchedResultsController *)fetchedResultsController {
@@ -35,21 +43,15 @@
     }
 
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription
-                                   entityForName:@"Person" inManagedObjectContext:_objectContext];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Batch" inManagedObjectContext:_objectContext];
     [fetchRequest setEntity:entity];
 
-    NSSortDescriptor *sort = [[NSSortDescriptor alloc]
-                              initWithKey:@"name" ascending:NO];
+    NSSortDescriptor *sort = [[NSSortDescriptor alloc] initWithKey:@"idName" ascending:NO];
     [fetchRequest setSortDescriptors:[NSArray arrayWithObject:sort]];
 
     [fetchRequest setFetchBatchSize:20];
 
-    NSFetchedResultsController *theFetchedResultsController =
-    [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
-                                        managedObjectContext:_objectContext
-                                          sectionNameKeyPath:nil
-                                                   cacheName:nil];
+    NSFetchedResultsController *theFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:_objectContext sectionNameKeyPath:nil cacheName:nil];
     self.fetchedResultsController = theFetchedResultsController;
     self.fetchedResultsController.delegate = self;
     
@@ -72,28 +74,14 @@
 
     NSString *cellIdentifier = @"BatchCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
-    Person *person = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    Batch *batch = [self.fetchedResultsController objectAtIndexPath:indexPath];
 
-    cell.textLabel.text = person.name;
+    cell.textLabel.text = batch.name;
 
     return cell;
 }
 
 
 
-#pragma - mark Web View Methods
-
-- (void)webViewDidStartLoad:(UIWebView *)webView {
-    _spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-    _spinner.frame = CGRectMake(360/2, 480/2, 40, 40);
-    [self.view addSubview:_spinner];
-    [_spinner startAnimating];
-}
-
-- (void)webViewDidFinishLoad:(UIWebView *)webView {
-    [self.fetchedResultsController performFetch:nil];
-    [self.tableView reloadData];
-    [_spinner stopAnimating];
-}
 
 @end

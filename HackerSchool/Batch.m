@@ -5,5 +5,6 @@
 
 @dynamic name;
 @dynamic idName;
+@dynamic students;
 
 @end

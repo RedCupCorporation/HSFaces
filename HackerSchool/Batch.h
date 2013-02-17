@@ -6,5 +6,6 @@
 
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSString * idName;
+@property (nonatomic, retain) NSMutableSet *students;
 
 @end

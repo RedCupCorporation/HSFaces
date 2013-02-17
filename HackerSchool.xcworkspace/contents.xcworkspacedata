@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:HackerSchool/logo.png">
+   </FileRef>
+   <FileRef
       location = "group:HackerSchool.xcdatamodeld">
    </FileRef>
    <FileRef
