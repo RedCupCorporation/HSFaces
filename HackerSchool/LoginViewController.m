@@ -1,5 +1,7 @@
 #import "LoginViewController.h"
 #import "BlockingViewController.h"
+#import "AppDelegate.h"
+#import <CoreData/CoreData.h>
 
 @interface LoginViewController ()
 
@@ -12,6 +14,7 @@
     _webView.delegate = self;
     _usernameField.delegate = self;
     _passwordField.delegate = self;
+    [self checkForData];
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.hackerschool.com/private"] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60];
     _webView.scalesPageToFit = YES;
     [_webView loadRequest:request];
@@ -83,6 +86,15 @@
 
 - (void)unblockUI {
     [_blockingView removeFromSuperview];
+}
+
+- (void)checkForData {
+    NSManagedObjectContext *objectContext = [(AppDelegate *)[[UIApplication sharedApplication] delegate] managedObjectContext];
+    NSFetchRequest *dataCheck = [[NSFetchRequest alloc] initWithEntityName:@"Batch"];
+    NSArray *batches = [objectContext executeFetchRequest:dataCheck error:nil];
+    if ([batches count] > 0) {
+        [self performSegueWithIdentifier:@"loginSegue" sender:self];
+    }
 }
 
 @end
