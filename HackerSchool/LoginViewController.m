@@ -18,24 +18,34 @@
 }
 
 - (IBAction)login:(id)sender {
-//    NSString *username = [_webView stringByEvaluatingJavaScriptFromString:@"document.getElementByName(\"commit\");"];
-//    NSLog(@"%@", username);
+    [_webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"document.getElementById(\"email\").value=\"%@\";", _usernameField.text]];
+    NSString *getPasswordBox = [NSString stringWithFormat:@"document.getElementById(\"password\").value=\"%@\";", _passwordField.text];
+    [_webView stringByEvaluatingJavaScriptFromString:getPasswordBox];
+    [_webView stringByEvaluatingJavaScriptFromString:@"$('input[name=commit]').removeAttr('disabled');"];
+    [_webView stringByEvaluatingJavaScriptFromString:@"$('input[name=commit]').click();"];
 }
 
 #pragma - mark TextField Delegate
 
-- (void)textFieldDidEndEditing:(UITextField *)textField {
-    if (textField == _usernameField) {
-        NSString *username = [_webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"document.getElementById(\"email\").innerHTML=\"%@\";", _usernameField.text]];
-        NSLog(@"%@", username);
-    }
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+    [UIView animateWithDuration:0.3 animations:^{
+        _logoImage.alpha = 0;
+        _logoImage.frame = CGRectOffset(_logoImage.frame, 0, -100);
+        _loginButtun.frame = CGRectOffset(_loginButtun.frame, 0, -90);
+        _usernameField.frame = CGRectOffset(_usernameField.frame, 0, -90);
+        _passwordField.frame = CGRectOffset(_passwordField.frame, 0, -90);
+    }];
+}
 
-    if (textField == _passwordField) {
-        NSString *test = [NSString stringWithFormat:@"document.getElementById(\"password\").innerHTML=\"%@\";", _passwordField.text];
-        NSString *password = [_webView stringByEvaluatingJavaScriptFromString:test];
-        NSLog(@"%@", password);
-    }
+- (void)textFieldDidEndEditing:(UITextField *)textField {
     [textField resignFirstResponder];
+    [UIView animateWithDuration:0.3 animations:^{
+        _logoImage.alpha = 1.0;
+        _logoImage.frame = CGRectOffset(_logoImage.frame, 0, 100);
+        _loginButtun.frame = CGRectOffset(_loginButtun.frame, 0, 90);
+        _usernameField.frame = CGRectOffset(_usernameField.frame, 0, 90);
+        _passwordField.frame = CGRectOffset(_passwordField.frame, 0, 90);
+    }];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
@@ -46,19 +56,18 @@
 #pragma - mark WebView Delegate
 
 - (void)webViewDidStartLoad:(UIWebView *)webView {
-//    _spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-//    _spinner.frame = CGRectMake(360/2, 480/2, 40, 40);
-//    [self.view addSubview:_spinner];
-//    [_spinner startAnimating];
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
-    _sitesLoaded++;
-    if (_sitesLoaded == 2) {
+    NSLog(@"loading site");
+    NSString *currentURL = webView.request.URL.absoluteString;
+    NSLog(@"%@", currentURL);
+    if ([currentURL isEqualToString:@"https://www.hackerschool.com/sessions"]) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Login error" message:@"Did you forget your username or password" delegate:self cancelButtonTitle:@"Maybe" otherButtonTitles:nil, nil];
+        [alert show];
+    } else if ([currentURL isEqualToString:@"https://www.hackerschool.com/private"]) {
         [self performSegueWithIdentifier:@"loginSegue" sender:self];
     }
-//    [self.fetchedResultsController performFetch:nil];
-//    [self.tableView reloadData];
-//    [_spinner stopAnimating];
 }
+
 @end
