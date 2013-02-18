@@ -1,4 +1,5 @@
 #import <UIKit/UIKit.h>
+#import "BlockingViewController.h"
 
 @interface LoginViewController : UIViewController <UIWebViewDelegate, UITextFieldDelegate>
 
@@ -7,6 +8,8 @@
 @property (strong, nonatomic) IBOutlet UITextField *passwordField;
 @property (strong, nonatomic) IBOutlet UIButton *loginButtun;
 @property (strong, nonatomic) IBOutlet UIWebView *webView;
+@property (strong, nonatomic) BlockingViewController *blockingView;
+
 - (IBAction)login:(id)sender;
 @property (nonatomic) int sitesLoaded;
 

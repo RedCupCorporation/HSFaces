@@ -1,4 +1,5 @@
 #import "LoginViewController.h"
+#import "BlockingViewController.h"
 
 @interface LoginViewController ()
 
@@ -56,10 +57,11 @@
 #pragma - mark WebView Delegate
 
 - (void)webViewDidStartLoad:(UIWebView *)webView {
+    [self blockUI];
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
-    NSLog(@"loading site");
+    [self unblockUI];
     NSString *currentURL = webView.request.URL.absoluteString;
     NSLog(@"%@", currentURL);
     if ([currentURL isEqualToString:@"https://www.hackerschool.com/sessions"]) {
@@ -68,6 +70,17 @@
     } else if ([currentURL isEqualToString:@"https://www.hackerschool.com/private"]) {
         [self performSegueWithIdentifier:@"loginSegue" sender:self];
     }
+}
+
+- (void)blockUI {
+    _blockingView = [[BlockingViewController alloc] init];
+    _blockingView.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame));
+    [self.view addSubview:_blockingView];
+    [_blockingView show];
+}
+
+- (void)unblockUI {
+    [_blockingView removeFromSuperview];
 }
 
 @end

@@ -1,11 +1,3 @@
-//
-//  BlockingViewController.m
-//  HackerSchool
-//
-//  Created by Adam Fraser on 18/02/13.
-//  Copyright (c) 2013 Adam Fraser. All rights reserved.
-//
-
 #import "BlockingViewController.h"
 
 @interface BlockingViewController ()
@@ -14,25 +6,38 @@
 
 @implementation BlockingViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+- (id)init {
+    self = [super init];
     if (self) {
-        // Custom initialization
+        self.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.8];
     }
     return self;
 }
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-	// Do any additional setup after loading the view.
+- (UIActivityIndicatorView *)spinner {
+    if (!_spinner) {
+        _spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+        [_spinner startAnimating];
+    }
+    return _spinner;
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)drawRect:(CGRect)rect {
+    self.frame = [[UIScreen mainScreen] applicationFrame];
+}
+
+- (void)layoutSubviews {
+    self.spinner.center = self.center;
+}
+
+- (void)show {
+    [self.window makeKeyAndVisible];
+    [self.window addSubview:self];
+    [self addSubview:self.spinner];
+    [UIView animateWithDuration:0.2 animations:^{
+        self.alpha = 1.0;
+    }];
+    [self.spinner startAnimating];
 }
 
 @end

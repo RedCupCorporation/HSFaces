@@ -24,6 +24,7 @@
 		662969C016CC20090058F30A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 662969BE16CC20090058F30A /* InfoPlist.strings */; };
 		662969C316CC20090058F30A /* HackerSchoolTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 662969C216CC20090058F30A /* HackerSchoolTests.m */; };
 		662969CE16CC2C150058F30A /* Parser.m in Sources */ = {isa = PBXBuildFile; fileRef = 662969CD16CC2C150058F30A /* Parser.m */; };
+		66A6045816D28D3C0074E792 /* BlockingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66A6045716D28D3C0074E792 /* BlockingViewController.m */; };
 		66F8414B16CC4ED300CA98B6 /* HackerSchool.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 66F8414916CC4ED300CA98B6 /* HackerSchool.xcdatamodeld */; };
 		66F8414E16CC50F500CA98B6 /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 66F8414D16CC50F500CA98B6 /* Person.m */; };
 		66F841A016CC567F00CA98B6 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66F8419F16CC567F00CA98B6 /* CoreData.framework */; };
@@ -71,6 +72,8 @@
 		662969C216CC20090058F30A /* HackerSchoolTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HackerSchoolTests.m; sourceTree = "<group>"; };
 		662969CC16CC2C150058F30A /* Parser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Parser.h; sourceTree = "<group>"; };
 		662969CD16CC2C150058F30A /* Parser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Parser.m; sourceTree = "<group>"; };
+		66A6045616D28D3C0074E792 /* BlockingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlockingViewController.h; sourceTree = "<group>"; };
+		66A6045716D28D3C0074E792 /* BlockingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlockingViewController.m; sourceTree = "<group>"; };
 		66F8414A16CC4ED300CA98B6 /* HackerSchool.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HackerSchool.xcdatamodel; sourceTree = "<group>"; };
 		66F8414C16CC50F500CA98B6 /* Person.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Person.h; sourceTree = "<group>"; };
 		66F8414D16CC50F500CA98B6 /* Person.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Person.m; sourceTree = "<group>"; };
@@ -156,6 +159,8 @@
 				66F841A816CD8D5700CA98B6 /* LoginViewController.m */,
 				662969AC16CC20090058F30A /* BatchViewController.h */,
 				662969AD16CC20090058F30A /* BatchViewController.m */,
+				66A6045616D28D3C0074E792 /* BlockingViewController.h */,
+				66A6045716D28D3C0074E792 /* BlockingViewController.m */,
 				66F841A116CD894A00CA98B6 /* Batch.h */,
 				66F841A216CD894A00CA98B6 /* Batch.m */,
 				662969CC16CC2C150058F30A /* Parser.h */,
@@ -344,6 +349,7 @@
 				66F841A316CD894B00CA98B6 /* Batch.m in Sources */,
 				66F841A916CD8D5700CA98B6 /* LoginViewController.m in Sources */,
 				66F841AC16CDA83700CA98B6 /* DisplayViewController.m in Sources */,
+				66A6045816D28D3C0074E792 /* BlockingViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
