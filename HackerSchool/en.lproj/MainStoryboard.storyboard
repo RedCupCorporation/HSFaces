@@ -167,7 +167,8 @@
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eMo-lk-3HA">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="235" id="nYu-Kd-IWW"/>
+                                    <constraint firstAttribute="width" constant="150" id="NOD-GW-RH5"/>
+                                    <constraint firstAttribute="height" constant="150" id="Tyd-cM-7V5"/>
                                 </constraints>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Guess who?" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WHv-Kn-Mcv">
@@ -177,12 +178,11 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="eMo-lk-3HA" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="MDC-ev-rgm"/>
-                            <constraint firstAttribute="bottom" secondItem="WHv-Kn-Mcv" secondAttribute="bottom" constant="132" id="Nzm-Do-hCN"/>
+                            <constraint firstItem="eMo-lk-3HA" firstAttribute="centerX" secondItem="WHv-Kn-Mcv" secondAttribute="centerX" type="default" id="JAP-hI-Tep"/>
                             <constraint firstItem="WHv-Kn-Mcv" firstAttribute="leading" secondItem="Cod-Zd-q1D" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="eDV-l9-aup"/>
-                            <constraint firstAttribute="trailing" secondItem="WHv-Kn-Mcv" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="po5-o2-KLR"/>
-                            <constraint firstItem="eMo-lk-3HA" firstAttribute="leading" secondItem="Cod-Zd-q1D" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="qpe-Te-RsJ"/>
+                            <constraint firstAttribute="trailing" secondItem="WHv-Kn-Mcv" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="jXM-kx-P1D"/>
                             <constraint firstItem="eMo-lk-3HA" firstAttribute="top" secondItem="Cod-Zd-q1D" secondAttribute="top" constant="20" symbolic="YES" type="default" id="qw4-GN-d7b"/>
+                            <constraint firstItem="WHv-Kn-Mcv" firstAttribute="top" secondItem="Cod-Zd-q1D" secondAttribute="top" constant="187" id="v0a-7a-PUa"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="3KL-uw-iV7"/>
@@ -199,6 +199,36 @@
     <resources>
         <image name="logo.png" width="140" height="140"/>
     </resources>
+    <classes>
+        <class className="DisplayViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DisplayViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="guessTextbox" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+        <class className="LoginViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/LoginViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="login:"/>
+                <relationship kind="outlet" name="loginButtun" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="passwordField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="usernameField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
+            </relationships>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="ViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="reloadtable:"/>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

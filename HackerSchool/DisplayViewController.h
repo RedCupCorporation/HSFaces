@@ -7,6 +7,8 @@
 @property (strong, nonatomic) IBOutlet UITextField *guessTextbox;
 @property (strong, nonatomic) Batch *batch;
 @property (strong, nonatomic) Person *currentStudent;
+@property (nonatomic) int lastGuess;
 
+- (void)newStudentImage;
 
 @end
