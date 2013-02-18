@@ -1,13 +1,13 @@
-#import "ViewController.h"
+#import "BatchViewController.h"
 #import "Parser.h"
 #import "Person.h"
 #import "Batch.h"
 
-@interface ViewController ()
+@interface BatchViewController ()
 
 @end
 
-@implementation ViewController
+@implementation BatchViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

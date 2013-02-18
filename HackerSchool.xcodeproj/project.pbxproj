@@ -17,7 +17,7 @@
 		662969A616CC20090058F30A /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 662969A516CC20090058F30A /* Default@2x.png */; };
 		662969A816CC20090058F30A /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 662969A716CC20090058F30A /* Default-568h@2x.png */; };
 		662969AB16CC20090058F30A /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 662969A916CC20090058F30A /* MainStoryboard.storyboard */; };
-		662969AE16CC20090058F30A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 662969AD16CC20090058F30A /* ViewController.m */; };
+		662969AE16CC20090058F30A /* BatchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 662969AD16CC20090058F30A /* BatchViewController.m */; };
 		662969B616CC20090058F30A /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 662969B516CC20090058F30A /* SenTestingKit.framework */; };
 		662969B716CC20090058F30A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6629699116CC20090058F30A /* UIKit.framework */; };
 		662969B816CC20090058F30A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6629699316CC20090058F30A /* Foundation.framework */; };
@@ -61,8 +61,8 @@
 		662969A516CC20090058F30A /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		662969A716CC20090058F30A /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		662969AA16CC20090058F30A /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
-		662969AC16CC20090058F30A /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		662969AD16CC20090058F30A /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		662969AC16CC20090058F30A /* BatchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BatchViewController.h; sourceTree = "<group>"; };
+		662969AD16CC20090058F30A /* BatchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BatchViewController.m; sourceTree = "<group>"; };
 		662969B416CC20090058F30A /* HackerSchoolTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HackerSchoolTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		662969B516CC20090058F30A /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		662969BD16CC20090058F30A /* HackerSchoolTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "HackerSchoolTests-Info.plist"; sourceTree = "<group>"; };
@@ -154,8 +154,8 @@
 				66F841AB16CDA83600CA98B6 /* DisplayViewController.m */,
 				66F841A716CD8D5700CA98B6 /* LoginViewController.h */,
 				66F841A816CD8D5700CA98B6 /* LoginViewController.m */,
-				662969AC16CC20090058F30A /* ViewController.h */,
-				662969AD16CC20090058F30A /* ViewController.m */,
+				662969AC16CC20090058F30A /* BatchViewController.h */,
+				662969AD16CC20090058F30A /* BatchViewController.m */,
 				66F841A116CD894A00CA98B6 /* Batch.h */,
 				66F841A216CD894A00CA98B6 /* Batch.m */,
 				662969CC16CC2C150058F30A /* Parser.h */,
@@ -337,7 +337,7 @@
 			files = (
 				6629699E16CC20090058F30A /* main.m in Sources */,
 				662969A216CC20090058F30A /* AppDelegate.m in Sources */,
-				662969AE16CC20090058F30A /* ViewController.m in Sources */,
+				662969AE16CC20090058F30A /* BatchViewController.m in Sources */,
 				662969CE16CC2C150058F30A /* Parser.m in Sources */,
 				66F8414B16CC4ED300CA98B6 /* HackerSchool.xcdatamodeld in Sources */,
 				66F8414E16CC50F500CA98B6 /* Person.m in Sources */,
