@@ -19,6 +19,8 @@
 }
 
 - (IBAction)login:(id)sender {
+    [self textFieldDidEndEditing:_passwordField];
+    [self textFieldDidEndEditing:_usernameField];
     [_webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"document.getElementById(\"email\").value=\"%@\";", _usernameField.text]];
     NSString *getPasswordBox = [NSString stringWithFormat:@"document.getElementById(\"password\").value=\"%@\";", _passwordField.text];
     [_webView stringByEvaluatingJavaScriptFromString:getPasswordBox];
