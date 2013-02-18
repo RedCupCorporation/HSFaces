@@ -75,7 +75,7 @@
 }
 
 - (void)blockUI {
-    _blockingView = [[BlockingViewController alloc] init];
+    _blockingView = [[BlockingViewController alloc] initWithMessage:@"Loading Hacker School Data.."];
     _blockingView.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame));
     [self.view addSubview:_blockingView];
     [_blockingView show];
