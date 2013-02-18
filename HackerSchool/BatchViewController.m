@@ -9,6 +9,7 @@
 
 @implementation BatchViewController
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [_webView setBackgroundColor:[UIColor redColor]];
@@ -19,7 +20,12 @@
     [parser fetchData];
     AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
     _objectContext = [appDelegate managedObjectContext];
+    [self.navigationItem setHidesBackButton:YES];
     [self reloadtable:nil];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
 }
 
 - (void)reloadtable:(id)sender {
