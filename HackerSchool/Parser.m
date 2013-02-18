@@ -6,6 +6,11 @@
 @implementation Parser
 
 - (Parser *)init {
+    self = [super init];
+    return self;
+}
+
+- (void)fetchData {
     NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://www.hackerschool.com/private"]];
     TFHpple *doc = [[TFHpple alloc] initWithHTMLData:data];
     AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
@@ -15,6 +20,10 @@
     NSArray *batchNames = [doc searchWithXPathQuery:@"//ul[@id='batches']/li/h2"];
 
     for (int i = 0; i < [batchNames count]; i++) {
+        if ([self existingItems:[batchIds objectAtIndex:i]]) {
+            continue;
+        }
+
         Batch *batch = [NSEntityDescription insertNewObjectForEntityForName:@"Batch" inManagedObjectContext:objectContext];
         batch.name = [[[batchNames objectAtIndex:i] firstChild] content];
         batch.idName = [(NSDictionary *)[[batchIds objectAtIndex:i] attributes] objectForKey:@"id"];
@@ -35,7 +44,20 @@
             [objectContext save:&error];
         }
     }
-    return nil;
+}
+
+- (BOOL)existingItems:(TFHppleElement *)batchElement {
+    NSString *idName = [(NSDictionary *)[batchElement attributes] objectForKey:@"id"];
+    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    NSManagedObjectContext *objectContext = [appDelegate managedObjectContext];
+
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Batch"];
+    request.predicate = [NSPredicate predicateWithFormat:@"idName == %@", idName];
+    NSUInteger count = [objectContext countForFetchRequest:request error:nil];
+    if (count > 0) {
+        return YES;
+    }
+    return NO;
 }
 
 @end

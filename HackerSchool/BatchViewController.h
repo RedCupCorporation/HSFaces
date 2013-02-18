@@ -7,6 +7,5 @@
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSManagedObjectContext *objectContext;
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
-- (IBAction)reloadtable:(id)sender;
 
 @end

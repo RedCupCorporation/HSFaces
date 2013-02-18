@@ -15,9 +15,11 @@
     _webView.delegate = self;
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.hackerschool.com/private"] cachePolicy:NSURLCacheStorageAllowed timeoutInterval:60];
     [_webView loadRequest:request];
-    Parser *paser = [[Parser alloc] init];
+    Parser *parser = [[Parser alloc] init];
+    [parser fetchData];
     AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
     _objectContext = [appDelegate managedObjectContext];
+    [self reloadtable:nil];
 }
 
 - (void)reloadtable:(id)sender {
