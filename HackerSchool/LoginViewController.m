@@ -15,9 +15,6 @@
     _usernameField.delegate = self;
     _passwordField.delegate = self;
     [self checkForData];
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.hackerschool.com/private"] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60];
-    _webView.scalesPageToFit = YES;
-    [_webView loadRequest:request];
     _sitesLoaded = 0;
 }
 
@@ -95,6 +92,10 @@
     NSArray *batches = [objectContext executeFetchRequest:dataCheck error:nil];
     if ([batches count] > 0) {
         [self performSegueWithIdentifier:@"loginSegue" sender:self];
+    } else {
+        NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.hackerschool.com/private"] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60];
+        _webView.scalesPageToFit = YES;
+        [_webView loadRequest:request];
     }
 }
 
