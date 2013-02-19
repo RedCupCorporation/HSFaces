@@ -21,16 +21,16 @@
     [self reloadtable:nil];
 }
 
+- (void)viewDidDisappear:(BOOL)animated {
+    [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
+}
+
 - (void)setupView {
     int height = [[UIScreen mainScreen] bounds].size.height;
     int width = [[UIScreen mainScreen] bounds].size.width;
     _tableView.frame = CGRectMake(0, 0, width, height);
     _tableView.contentInset = UIEdgeInsetsMake(90, 0, 20, 0);
     _tableView.backgroundView = _tableBackgroundImageView;
-}
-
-- (void)viewDidAppear:(BOOL)animated {
-    [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
 }
 
 - (void)reloadtable:(id)sender {
