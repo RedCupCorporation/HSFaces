@@ -49,13 +49,15 @@
 
 - (void)textFieldDidEndEditing:(UITextField *)textField {
     [textField resignFirstResponder];
-    [UIView animateWithDuration:0.3 animations:^{
-        _logoImage.alpha = 1.0;
-        _logoImage.frame = CGRectOffset(_logoImage.frame, 0, 100);
-        _loginButtun.frame = CGRectOffset(_loginButtun.frame, 0, 90);
-        _usernameField.frame = CGRectOffset(_usernameField.frame, 0, 90);
-        _passwordField.frame = CGRectOffset(_passwordField.frame, 0, 90);
-    }];
+    if (_logoImage.frame.origin.y > 4) {
+        [UIView animateWithDuration:0.3 animations:^{
+            _logoImage.alpha = 1.0;
+            _logoImage.frame = CGRectOffset(_logoImage.frame, 0, 100);
+            _loginButtun.frame = CGRectOffset(_loginButtun.frame, 0, 90);
+            _usernameField.frame = CGRectOffset(_usernameField.frame, 0, 90);
+            _passwordField.frame = CGRectOffset(_passwordField.frame, 0, 90);
+        }];
+    }
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
