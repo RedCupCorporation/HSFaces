@@ -45,7 +45,6 @@
 }
 
 - (void)nextGuess {
-    [self updateScore];
     [self removeStudent];
     _guessTextbox.text = @"";
     if ([_students count] == 0) {
@@ -96,10 +95,6 @@
         _warning.font = [UIFont boldSystemFontOfSize:25];
         _warning.transform = CGAffineTransformMakeRotation(-0.6);
     }];
-}
-
-- (void)updateScore {
-    _scoreLabel.text = [NSString stringWithFormat:@"%d / %d", _score, _guesses];
 }
 
 - (IBAction)submit:(id)sender {

@@ -155,13 +155,6 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="eMo-lk-3HA">
                                 <rect key="frame" x="90" y="11" width="140" height="140"/>
                             </imageView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="0 / 0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4gr-DA-DC9">
-                                <rect key="frame" x="256" y="130" width="57" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <view contentMode="scaleToFill" id="vzE-Hp-wgZ">
                                 <rect key="frame" x="0.0" y="159" width="320" height="41"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -198,7 +191,6 @@
                         <outlet property="guessButton" destination="SLf-Ec-xHk" id="Xg4-lN-Lar"/>
                         <outlet property="guessTextbox" destination="7iB-Hv-t4x" id="tHl-9b-wdW"/>
                         <outlet property="imageView" destination="eMo-lk-3HA" id="1Qc-8Q-g0V"/>
-                        <outlet property="scoreLabel" destination="4gr-DA-DC9" id="XRL-2o-9lQ"/>
                         <outlet property="submitFormView" destination="vzE-Hp-wgZ" id="Gwi-gK-Zt8"/>
                     </connections>
                 </viewController>
@@ -233,7 +225,6 @@
                 <relationship kind="outlet" name="guessButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="guessTextbox" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="scoreLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="submitFormView" candidateClass="UIView"/>
             </relationships>
         </class>
