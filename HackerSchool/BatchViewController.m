@@ -17,6 +17,7 @@
     _objectContext = [appDelegate managedObjectContext];
     [self setupView];
     [self.navigationItem setHidesBackButton:YES];
+    self.title = @"Batches";
     [self reloadtable:nil];
 }
 

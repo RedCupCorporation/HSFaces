@@ -16,6 +16,8 @@
     _passwordField.delegate = self;
     [self checkForData];
     _sitesLoaded = 0;
+    self.navigationController.navigationBar.tintColor = [UIColor blackColor];
+    self.title = @"Hacker School Faces";
 }
 
 - (IBAction)login:(id)sender {

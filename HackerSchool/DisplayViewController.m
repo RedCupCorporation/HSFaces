@@ -20,6 +20,7 @@
     [_guessTextbox addTarget:self action:@selector(textChanged) forControlEvents:UIControlEventAllEditingEvents];
     [_guessTextbox becomeFirstResponder];
     [self newStudentImage];
+    self.title = @"Hacker School Faces";
 }
 
 - (void)setupViews {
