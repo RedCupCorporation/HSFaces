@@ -2,6 +2,7 @@
 #import "Parser.h"
 #import "Person.h"
 #import "Batch.h"
+#import "AppDelegate.h"
 
 @interface BatchViewController ()
 
@@ -95,7 +96,34 @@
     return cell;
 }
 
+- (IBAction)resetData:(id)sender {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Reset app data" message:@"This will reset all data stored in the app. You will have to resync." delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Ok", nil];
+    [alert show];
+}
 
+#pragma mark - AlertViewDelegate
+
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 1) {
+        NSManagedObjectContext *objectContext = [(AppDelegate *)[[UIApplication sharedApplication] delegate] managedObjectContext];
+        NSFetchRequest *fetchBatches = [[NSFetchRequest alloc] initWithEntityName:@"Batch"];
+        [fetchBatches setIncludesPropertyValues:NO];
+
+        NSFetchRequest *fetchStudents = [[NSFetchRequest alloc] initWithEntityName:@"Person"];
+        [fetchStudents setIncludesPropertyValues:NO];
+
+        NSArray *batches = [objectContext executeFetchRequest:fetchBatches error:nil];
+        for (Batch *batch in batches) {
+            [objectContext deleteObject:batch];
+        }
+
+        NSArray *people = [objectContext executeFetchRequest:fetchStudents error:nil];
+        for (Person *person in people) {
+            [objectContext deleteObject:person];
+        }
+        [self.navigationController popToRootViewControllerAnimated:YES];
+    }
+}
 
 
 @end

@@ -20,6 +20,10 @@
     self.title = @"Hacker School Faces";
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [self checkForData];
+}
+
 - (IBAction)login:(id)sender {
     [self textFieldDidEndEditing:_passwordField];
     [self textFieldDidEndEditing:_usernameField];
@@ -97,7 +101,7 @@
     if ([batches count] > 0) {
         [self performSegueWithIdentifier:@"loginSegue" sender:self];
     } else {
-        NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.hackerschool.com/private"] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60];
+        NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.hackerschool.com/login"] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60];
         _webView.scalesPageToFit = YES;
         [_webView loadRequest:request];
     }

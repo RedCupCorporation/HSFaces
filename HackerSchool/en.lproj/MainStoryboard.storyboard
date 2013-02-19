@@ -112,12 +112,28 @@
                                     <outlet property="delegate" destination="2" id="qIX-9g-iHS"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="xdF-Yc-ji6">
+                                <rect key="frame" x="18" y="12" width="32" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" image="sync@2x.png">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="resetData:" destination="2" eventType="touchUpInside" id="a12-0N-iv6"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="6pt-T8-dQN"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
+                        <outlet property="resetButton" destination="xdF-Yc-ji6" id="ofW-Iv-E4T"/>
                         <outlet property="tableBackgroundImageView" destination="duT-U4-gvp" id="i0a-fv-XuD"/>
                         <outlet property="tableView" destination="X71-Cn-73g" id="Kng-FF-jzf"/>
                         <outlet property="webView" destination="dQx-E7-y6r" id="3qd-lf-RYy"/>
@@ -195,12 +211,15 @@
         <image name="submitButton@2x.png" width="132" height="68"/>
         <image name="submitButtonDisabled@2x.png" width="132" height="68"/>
         <image name="submitButtonPressed@2x.png" width="132" height="68"/>
+        <image name="sync@2x.png" width="96" height="96"/>
         <image name="tableViewBackground@2x.png" width="640" height="960"/>
     </resources>
     <classes>
         <class className="BatchViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/BatchViewController.h"/>
             <relationships>
+                <relationship kind="action" name="resetData:"/>
+                <relationship kind="outlet" name="resetButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="tableBackgroundImageView" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
             </relationships>
