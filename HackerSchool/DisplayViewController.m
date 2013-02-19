@@ -15,6 +15,7 @@
     _students = [[_batch.students allObjects] mutableCopy];
     _score = 0;
     _guesses = 0;
+    _guessTextbox.autocorrectionType = UITextAutocorrectionTypeNo;
     _guessTextbox.delegate = self;
     _guessButton.enabled = NO;
     [_guessTextbox addTarget:self action:@selector(textChanged) forControlEvents:UIControlEventAllEditingEvents];
