@@ -15,10 +15,17 @@
     [parser fetchData];
     AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
     _objectContext = [appDelegate managedObjectContext];
-    _tableView.contentInset = UIEdgeInsetsMake(50, 0, 20, 0);
-    _tableView.backgroundView = _tableBackgroundImageView;
+    [self setupView];
     [self.navigationItem setHidesBackButton:YES];
     [self reloadtable:nil];
+}
+
+- (void)setupView {
+    int height = [[UIScreen mainScreen] bounds].size.height;
+    int width = [[UIScreen mainScreen] bounds].size.width;
+    _tableView.frame = CGRectMake(0, 0, width, height);
+    _tableView.contentInset = UIEdgeInsetsMake(90, 0, 20, 0);
+    _tableView.backgroundView = _tableBackgroundImageView;
 }
 
 - (void)viewDidAppear:(BOOL)animated {

@@ -86,7 +86,7 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="top" image="logo.png" id="duT-U4-gvp">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" image="tableViewBackground@2x.png" id="duT-U4-gvp">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -195,6 +195,7 @@
         <image name="submitButton@2x.png" width="132" height="68"/>
         <image name="submitButtonDisabled@2x.png" width="132" height="68"/>
         <image name="submitButtonPressed@2x.png" width="132" height="68"/>
+        <image name="tableViewBackground@2x.png" width="640" height="960"/>
     </resources>
     <classes>
         <class className="BatchViewController" superclassName="UIViewController">
