@@ -33,13 +33,15 @@
 #pragma - mark TextField Delegate
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
-    [UIView animateWithDuration:0.3 animations:^{
-        _logoImage.alpha = 0;
-        _logoImage.frame = CGRectOffset(_logoImage.frame, 0, -100);
-        _loginButtun.frame = CGRectOffset(_loginButtun.frame, 0, -90);
-        _usernameField.frame = CGRectOffset(_usernameField.frame, 0, -90);
-        _passwordField.frame = CGRectOffset(_passwordField.frame, 0, -90);
-    }];
+    if ((_logoImage.frame.origin.y) > 4) {
+        [UIView animateWithDuration:0.3 animations:^{
+            _logoImage.alpha = 0;
+            _logoImage.frame = CGRectOffset(_logoImage.frame, 0, -100);
+            _loginButtun.frame = CGRectOffset(_loginButtun.frame, 0, -90);
+            _usernameField.frame = CGRectOffset(_usernameField.frame, 0, -90);
+            _passwordField.frame = CGRectOffset(_passwordField.frame, 0, -90);
+        }];
+    }
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField {
@@ -70,7 +72,7 @@
     [self unblockUI];
     NSString *currentURL = webView.request.URL.absoluteString;
     if ([currentURL isEqualToString:@"https://www.hackerschool.com/sessions"]) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Login error" message:@"Did you forget your username or password" delegate:self cancelButtonTitle:@"Maybe" otherButtonTitles:nil, nil];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Login error" message:@"Did you forget your username or password?" delegate:self cancelButtonTitle:@"Let me try again" otherButtonTitles:nil, nil];
         [alert show];
     } else if ([currentURL isEqualToString:@"https://www.hackerschool.com/private"]) {
         [self performSegueWithIdentifier:@"loginSegue" sender:self];
