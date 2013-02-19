@@ -174,7 +174,7 @@
                                             <action selector="submit:" destination="r73-Zg-9vO" eventType="touchUpInside" id="Blh-hD-qdR"/>
                                         </connections>
                                     </button>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Guess who?" minimumFontSize="17" id="7iB-Hv-t4x">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="7iB-Hv-t4x">
                                         <rect key="frame" x="9" y="6" width="233" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
