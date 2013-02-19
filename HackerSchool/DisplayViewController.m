@@ -11,26 +11,42 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self setupViews];
     _students = [[_batch.students allObjects] mutableCopy];
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap)];
-    [self.view addGestureRecognizer:tap];
+    _tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap)];
+    [self.view addGestureRecognizer:_tap];
     _score = 0;
     _guesses = 0;
     _guessTextbox.delegate = self;
+    [_guessTextbox becomeFirstResponder];
     [self newStudentImage];
 }
 
-- (IBAction)guessName {
-    NSArray *parts = [_currentStudent.name componentsSeparatedByString:@" "];
-    if ([[_guessTextbox.text lowercaseString] isEqualToString:[[parts objectAtIndex:0] lowercaseString]]) {
-        [self correctGuess];
-    } else {
-        [self incorrectGuess:[parts objectAtIndex:0]];
+- (void)setupViews {
+    if ([[UIScreen mainScreen] bounds].size.height > 500) {
+        _submitFormView.frame = CGRectOffset(_submitFormView.frame, 0, 87);
+        _imageView.frame = CGRectInset(_imageView.frame, -20, -20);
+        _imageView.frame = CGRectMake(CGRectGetMinX(_imageView.frame)-10, CGRectGetMinY(_imageView.frame)+20, CGRectGetWidth(_imageView.frame)+20, CGRectGetHeight(_imageView.frame)+20);
     }
+}
+
+- (void)guessSequence {
+    if ([self guessName]) {
+        _score++;
+        _guesses++;
+        [self nextGuess];
+    } else {
+        _guesses++;
+        [self displayError];
+        _tap.enabled = false;
+        [self performSelector:@selector(removeError) withObject:nil afterDelay:1.0];
+    }
+}
+
+- (void)nextGuess {
     [self updateScore];
-    [_students removeObject:_currentStudent];
-    NSLog(@"removeing %@", _currentStudent.name);
-    NSLog(@"%d students left", [_students count]);
+    [self removeStudent];
+    _guessTextbox.text = @"";
     if ([_students count] == 0) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:@"You scored %d out of %d", _score, _guesses] message:@"Nice Work!" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
         [alert show];
@@ -39,32 +55,54 @@
     [self newStudentImage];
 }
 
-- (void)correctGuess {
-    _score++;
-    _guesses++;
+- (void)removeStudent {
+    [_students removeObject:_currentStudent];
+    NSLog(@"removeing %@", _currentStudent.name);
+    NSLog(@"%d students left", [_students count]);
 }
 
-- (void)incorrectGuess:(NSString *)name {
-    _guesses++;
-    UILabel *incorrect = [[UILabel alloc] initWithFrame:CGRectMake(80, 100, 200, 50)];
-    incorrect.text = [NSString stringWithFormat:@"Uhoh.. that was %@", name];
-    incorrect.backgroundColor = [UIColor clearColor];
-    incorrect.font = [UIFont systemFontOfSize:50];
-    incorrect.textColor = [UIColor redColor];
-    [self.view addSubview:incorrect];
+- (BOOL)guessName {
+    NSArray *parts = [_currentStudent.name componentsSeparatedByString:@" "];
+    if ([[_guessTextbox.text lowercaseString] isEqualToString:[[parts objectAtIndex:0] lowercaseString]] || [[_guessTextbox.text lowercaseString] isEqualToString:[_currentStudent.name lowercaseString]] ) {
+        return YES;
+    } else {
+        return NO;
+    }
+}
+
+- (void)removeError {
+    _imageView.alpha = 1.0;
+    [_warning removeFromSuperview];
+    _tap.enabled = TRUE;
+    [self nextGuess];
+}
+
+- (void)displayError {
+    NSString *name = [[_currentStudent.name componentsSeparatedByString:@" "] objectAtIndex:0];
+
+    _warning = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMidX(_imageView.frame), CGRectGetMaxY(_imageView.frame), 200, 50)];
+    _warning.numberOfLines = 0;
+    _warning.textAlignment = NSTextAlignmentCenter;
+    _warning.text = [NSString stringWithFormat:@"Uhoh.. that was %@", name];
+    _warning.backgroundColor = [UIColor clearColor];
+    _warning.font = [UIFont systemFontOfSize:50];
+    _warning.textColor = [UIColor redColor];
+    [self.view addSubview:_warning];
 
     [UIView animateWithDuration:0.1 animations:^{
-        incorrect.frame = CGRectMake(CGRectGetMinX(_imageView.frame)-50, CGRectGetMaxY(_imageView.frame)-100, 300, 50);
-        incorrect.font = [UIFont boldSystemFontOfSize:25];
-        incorrect.transform = CGAffineTransformMakeRotation(-0.6);
-    } completion:^(BOOL finished) {
-        sleep(1);
-        [incorrect removeFromSuperview];
+        _imageView.alpha = 0.5;
+        _warning.frame = CGRectMake(CGRectGetMinX(_imageView.frame)-50, CGRectGetMaxY(_imageView.frame)-100, 200, 100);
+        _warning.font = [UIFont boldSystemFontOfSize:25];
+        _warning.transform = CGAffineTransformMakeRotation(-0.6);
     }];
 }
 
 - (void)updateScore {
     _scoreLabel.text = [NSString stringWithFormat:@"%d / %d", _score, _guesses];
+}
+
+- (IBAction)submit:(id)sender {
+    [self guessSequence];
 }
 
 - (void)newStudentImage {
@@ -77,7 +115,6 @@
     } while (num == _lastGuess && [_students count] > 1);
 
     _currentStudent = [_students objectAtIndex:num];
-    NSLog(@"current student is %@", _currentStudent.name);
     _lastGuess = num;
     NSString *requestString = [NSString stringWithFormat:@"http://www.hackerschool.com%@", _currentStudent.image];
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:requestString]];
@@ -89,39 +126,13 @@
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
         _imageView.alpha = 0.3;
     }];
-    _guessTextbox.text = @"";
 }
 
 - (void)handleTap {
     if ([_guessTextbox.text length] == 0) {
         return;
     }
-    [self guessName];
-}
-
-#pragma mark - UITextField Delegate
-
-- (BOOL)textFieldShouldReturn:(UITextField *)textField {
-    [textField resignFirstResponder];
-    return YES;
-}
-
-- (void)textFieldDidEndEditing:(UITextField *)textField {
-    [UIView animateWithDuration:0.3 animations:^{
-        _imageView.frame = CGRectOffset(_imageView.frame, 0, 20);
-        _imageView.frame = CGRectInset(_imageView.frame, -10, -10);
-        _guessTextbox.frame = CGRectOffset(_guessTextbox.frame, 0, 20);
-        _scoreLabel.frame = CGRectOffset(_scoreLabel.frame, 0, 20);
-    }];
-}
-
-- (void)textFieldDidBeginEditing:(UITextField *)textField {
-    [UIView animateWithDuration:0.3 animations:^{
-        _imageView.frame = CGRectOffset(_imageView.frame, 0, -20);
-        _imageView.frame = CGRectInset(_imageView.frame, 10, 10);
-        _guessTextbox.frame = CGRectOffset(_guessTextbox.frame, 0, -20);
-        _scoreLabel.frame = CGRectOffset(_scoreLabel.frame, 0, -20);
-    }];
+    [self guessSequence];
 }
 
 #pragma mark - UIAlertViewDelegate

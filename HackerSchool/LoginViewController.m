@@ -62,13 +62,14 @@
 #pragma - mark WebView Delegate
 
 - (void)webViewDidStartLoad:(UIWebView *)webView {
+    NSLog(@"site started loading");
     [self blockUI];
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
+    NSLog(@"site finished loading");
     [self unblockUI];
     NSString *currentURL = webView.request.URL.absoluteString;
-    NSLog(@"%@", currentURL);
     if ([currentURL isEqualToString:@"https://www.hackerschool.com/sessions"]) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Login error" message:@"Did you forget your username or password" delegate:self cancelButtonTitle:@"Maybe" otherButtonTitles:nil, nil];
         [alert show];

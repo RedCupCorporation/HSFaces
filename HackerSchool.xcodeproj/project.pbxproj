@@ -25,6 +25,8 @@
 		662969C316CC20090058F30A /* HackerSchoolTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 662969C216CC20090058F30A /* HackerSchoolTests.m */; };
 		662969CE16CC2C150058F30A /* Parser.m in Sources */ = {isa = PBXBuildFile; fileRef = 662969CD16CC2C150058F30A /* Parser.m */; };
 		66A6045816D28D3C0074E792 /* BlockingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66A6045716D28D3C0074E792 /* BlockingViewController.m */; };
+		66A6045B16D406E00074E792 /* submitButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 66A6045916D406E00074E792 /* submitButton@2x.png */; };
+		66A6045C16D406E00074E792 /* submitButtonPressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 66A6045A16D406E00074E792 /* submitButtonPressed@2x.png */; };
 		66F8414B16CC4ED300CA98B6 /* HackerSchool.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 66F8414916CC4ED300CA98B6 /* HackerSchool.xcdatamodeld */; };
 		66F8414E16CC50F500CA98B6 /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 66F8414D16CC50F500CA98B6 /* Person.m */; };
 		66F841A016CC567F00CA98B6 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66F8419F16CC567F00CA98B6 /* CoreData.framework */; };
@@ -74,6 +76,8 @@
 		662969CD16CC2C150058F30A /* Parser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Parser.m; sourceTree = "<group>"; };
 		66A6045616D28D3C0074E792 /* BlockingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlockingViewController.h; sourceTree = "<group>"; };
 		66A6045716D28D3C0074E792 /* BlockingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlockingViewController.m; sourceTree = "<group>"; };
+		66A6045916D406E00074E792 /* submitButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "submitButton@2x.png"; sourceTree = "<group>"; };
+		66A6045A16D406E00074E792 /* submitButtonPressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "submitButtonPressed@2x.png"; sourceTree = "<group>"; };
 		66F8414A16CC4ED300CA98B6 /* HackerSchool.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HackerSchool.xcdatamodel; sourceTree = "<group>"; };
 		66F8414C16CC50F500CA98B6 /* Person.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Person.h; sourceTree = "<group>"; };
 		66F8414D16CC50F500CA98B6 /* Person.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Person.m; sourceTree = "<group>"; };
@@ -210,6 +214,8 @@
 			isa = PBXGroup;
 			children = (
 				66F841A416CD8C6900CA98B6 /* logo.png */,
+				66A6045916D406E00074E792 /* submitButton@2x.png */,
+				66A6045A16D406E00074E792 /* submitButtonPressed@2x.png */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -292,6 +298,8 @@
 				662969A816CC20090058F30A /* Default-568h@2x.png in Resources */,
 				662969AB16CC20090058F30A /* MainStoryboard.storyboard in Resources */,
 				66F841A516CD8C6900CA98B6 /* logo.png in Resources */,
+				66A6045B16D406E00074E792 /* submitButton@2x.png in Resources */,
+				66A6045C16D406E00074E792 /* submitButtonPressed@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
