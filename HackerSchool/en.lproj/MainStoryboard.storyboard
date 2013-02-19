@@ -152,6 +152,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <state key="disabled" backgroundImage="submitButtonDisabled@2x.png"/>
                                         <state key="selected" backgroundImage="submitButtonPressed@2x.png"/>
                                         <state key="highlighted" backgroundImage="submitButtonPressed@2x.png"/>
                                         <connections>
@@ -187,6 +188,7 @@
     <resources>
         <image name="logo.png" width="140" height="140"/>
         <image name="submitButton@2x.png" width="132" height="68"/>
+        <image name="submitButtonDisabled@2x.png" width="132" height="68"/>
         <image name="submitButtonPressed@2x.png" width="132" height="68"/>
     </resources>
     <classes>
@@ -194,7 +196,6 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/BatchViewController.h"/>
             <relationships>
                 <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
             </relationships>
         </class>
         <class className="DisplayViewController" superclassName="UIViewController">
@@ -205,6 +206,7 @@
                 <relationship kind="outlet" name="guessTextbox" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="scoreLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="submitFormView" candidateClass="UIView"/>
             </relationships>
         </class>
         <class className="LoginViewController" superclassName="UIViewController">

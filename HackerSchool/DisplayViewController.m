@@ -16,6 +16,8 @@
     _score = 0;
     _guesses = 0;
     _guessTextbox.delegate = self;
+    _guessButton.enabled = NO;
+    [_guessTextbox addTarget:self action:@selector(textChanged) forControlEvents:UIControlEventAllEditingEvents];
     [_guessTextbox becomeFirstResponder];
     [self newStudentImage];
 }
@@ -36,6 +38,7 @@
     } else {
         _guesses++;
         [self displayError];
+        _guessButton.enabled = NO;
         [self performSelector:@selector(removeError) withObject:nil afterDelay:1.0];
     }
 }
@@ -70,6 +73,7 @@
 - (void)removeError {
     _imageView.alpha = 1.0;
     [_warning removeFromSuperview];
+    _guessButton.enabled = YES;
     [self nextGuess];
 }
 
@@ -129,6 +133,14 @@
         return;
     }
     [self guessSequence];
+}
+
+- (void)textChanged {
+    if ([_guessTextbox.text length] > 0) {
+        _guessButton.enabled = YES;
+    } else {
+        _guessButton.enabled = NO;
+    }
 }
 
 #pragma mark - UIAlertViewDelegate
