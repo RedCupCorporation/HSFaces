@@ -9,13 +9,14 @@
 
 @implementation BatchViewController
 
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     Parser *parser = [[Parser alloc] init];
     [parser fetchData];
     AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
     _objectContext = [appDelegate managedObjectContext];
+    _tableView.contentInset = UIEdgeInsetsMake(50, 0, 20, 0);
+    _tableView.backgroundView = _tableBackgroundImageView;
     [self.navigationItem setHidesBackButton:YES];
     [self reloadtable:nil];
 }
@@ -81,6 +82,7 @@
     Batch *batch = [self.fetchedResultsController objectAtIndexPath:indexPath];
 
     cell.textLabel.text = batch.name;
+    cell.contentView.backgroundColor = [UIColor whiteColor];
 
     return cell;
 }
