@@ -7,7 +7,6 @@
 @property (nonatomic) int guesses;
 @property (strong, nonatomic) NSMutableArray *students;
 
-@property (strong, nonatomic) UITapGestureRecognizer *tap;
 @property (strong, nonatomic) UILabel *warning;
 @property (strong, nonatomic) IBOutlet UILabel *scoreLabel;
 @property (strong, nonatomic) IBOutlet UIImageView *imageView;

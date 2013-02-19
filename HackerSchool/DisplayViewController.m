@@ -13,8 +13,6 @@
     [super viewDidLoad];
     [self setupViews];
     _students = [[_batch.students allObjects] mutableCopy];
-    _tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap)];
-    [self.view addGestureRecognizer:_tap];
     _score = 0;
     _guesses = 0;
     _guessTextbox.delegate = self;
@@ -38,7 +36,6 @@
     } else {
         _guesses++;
         [self displayError];
-        _tap.enabled = false;
         [self performSelector:@selector(removeError) withObject:nil afterDelay:1.0];
     }
 }
@@ -73,7 +70,6 @@
 - (void)removeError {
     _imageView.alpha = 1.0;
     [_warning removeFromSuperview];
-    _tap.enabled = TRUE;
     [self nextGuess];
 }
 
