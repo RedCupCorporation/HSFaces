@@ -16,7 +16,6 @@
     _score = 0;
     _guesses = 0;
     _guessTextbox.autocorrectionType = UITextAutocorrectionTypeNo;
-    _guessTextbox.delegate = self;
     _guessButton.enabled = NO;
     [_guessTextbox addTarget:self action:@selector(textChanged) forControlEvents:UIControlEventAllEditingEvents];
     [_guessTextbox becomeFirstResponder];
@@ -48,6 +47,7 @@
 - (void)nextGuess {
     [self removeStudent];
     _guessTextbox.text = @"";
+    [self textChanged];
     if ([_students count] == 0) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:@"You scored %d out of %d", _score, _guesses] message:@"Nice Work!" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
         [alert show];
@@ -58,8 +58,6 @@
 
 - (void)removeStudent {
     [_students removeObject:_currentStudent];
-    NSLog(@"removeing %@", _currentStudent.name);
-    NSLog(@"%d students left", [_students count]);
 }
 
 - (BOOL)guessName {
