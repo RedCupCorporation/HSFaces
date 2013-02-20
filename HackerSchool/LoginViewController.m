@@ -13,7 +13,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _webView.delegate = self;
     _usernameField.delegate = self;
     _passwordField.delegate = self;
     _sitesLoaded = 0;
@@ -73,8 +72,6 @@
     [textField resignFirstResponder];
     return YES;
 }
-
-#pragma - mark WebView Delegate
 
 - (void)blockUI {
     _blockingView = [[BlockingViewController alloc] initWithMessage:@"Loading Hacker School Data.."];

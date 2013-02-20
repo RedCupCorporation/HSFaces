@@ -42,10 +42,6 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="logo.png" id="QFv-FW-6vp">
                                 <rect key="frame" x="58" y="6" width="204" height="126"/>
                             </imageView>
-                            <webView contentMode="scaleToFill" id="dQx-E7-y6r">
-                                <rect key="frame" x="0.0" y="443" width="10" height="17"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                            </webView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Goy-0A-kKb">
                                 <rect key="frame" x="125" y="216" width="72" height="31"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
@@ -70,7 +66,6 @@
                         <outlet property="logoImage" destination="QFv-FW-6vp" id="e5e-Dz-Tcw"/>
                         <outlet property="passwordField" destination="Kqm-ml-TaC" id="6Bp-9m-QDo"/>
                         <outlet property="usernameField" destination="e03-W6-ULc" id="eIl-hd-jsE"/>
-                        <outlet property="webView" destination="dQx-E7-y6r" id="hlq-j0-DXf"/>
                         <segue destination="2" kind="push" identifier="loginSegue" id="es7-Vl-HJR"/>
                     </connections>
                 </viewController>
@@ -137,7 +132,6 @@
                         <outlet property="resetButton" destination="xdF-Yc-ji6" id="ofW-Iv-E4T"/>
                         <outlet property="tableBackgroundImageView" destination="duT-U4-gvp" id="i0a-fv-XuD"/>
                         <outlet property="tableView" destination="X71-Cn-73g" id="Kng-FF-jzf"/>
-                        <outlet property="webView" destination="dQx-E7-y6r" id="3qd-lf-RYy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
@@ -208,38 +202,6 @@
         <image name="syncSelected@2x.png" width="96" height="96"/>
         <image name="tableViewBackground@2x.png" width="640" height="960"/>
     </resources>
-    <classes>
-        <class className="BatchViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/BatchViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="resetData:"/>
-                <relationship kind="outlet" name="resetButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="tableBackgroundImageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="DisplayViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DisplayViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="submit:"/>
-                <relationship kind="outlet" name="guessButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="guessTextbox" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="submitFormView" candidateClass="UIView"/>
-            </relationships>
-        </class>
-        <class className="LoginViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/LoginViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="login:"/>
-                <relationship kind="outlet" name="loginButtun" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="logoImage" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="passwordField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="usernameField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
