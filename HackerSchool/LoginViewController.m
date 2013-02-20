@@ -12,6 +12,7 @@
 @implementation LoginViewController
 
 - (void)viewDidLoad {
+    [self checkForData];
     [super viewDidLoad];
     _usernameField.delegate = self;
     _passwordField.delegate = self;
@@ -20,24 +21,29 @@
     self.title = @"Hacker School Faces";
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-    [self checkForData];
-}
-
 - (IBAction)login:(id)sender {
     [self textFieldDidEndEditing:_passwordField];
     [self textFieldDidEndEditing:_usernameField];
 
+    [self blockUI];
     NSURL *url = [NSURL URLWithString:@"https://www.hackerschool.com"];
     AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:url];
-    
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:_usernameField.text, @"email", _passwordField.text, @"password", nil];
     [httpClient postPath:@"/sessions" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        Parser *parser = [[Parser alloc] init];
-        [parser parseData:responseObject];
-        [self performSegueWithIdentifier:@"loginSegue" sender:nil];
+        if ([[operation.response.URL absoluteString] isEqualToString:@"https://www.hackerschool.com/private"]) {
+            Parser *parser = [[Parser alloc] init];
+            [parser parseData:responseObject];
+            [self unblockUI];
+            [self performSegueWithIdentifier:@"loginSegue" sender:nil];
+        } else {
+            [self unblockUI];
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Login Error" message:@"Your password or email was incorrect." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            [alert show];
+        }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"[httpClientError error]: %@", error);
+        [self unblockUI];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Network Error" message:@"There was an error connecting to hacker school. Check your connection and try again." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alert show];
     }];
 }
 
