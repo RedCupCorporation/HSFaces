@@ -2,6 +2,8 @@
 #import "BlockingViewController.h"
 #import "AppDelegate.h"
 #import <CoreData/CoreData.h>
+#import <AFNetworking.h>
+#import "Parser.h"
 
 @interface LoginViewController ()
 
@@ -26,11 +28,18 @@
 - (IBAction)login:(id)sender {
     [self textFieldDidEndEditing:_passwordField];
     [self textFieldDidEndEditing:_usernameField];
-    [_webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"document.getElementById(\"email\").value=\"%@\";", _usernameField.text]];
-    NSString *getPasswordBox = [NSString stringWithFormat:@"document.getElementById(\"password\").value=\"%@\";", _passwordField.text];
-    [_webView stringByEvaluatingJavaScriptFromString:getPasswordBox];
-    [_webView stringByEvaluatingJavaScriptFromString:@"$('input[name=commit]').removeAttr('disabled');"];
-    [_webView stringByEvaluatingJavaScriptFromString:@"$('input[name=commit]').click();"];
+
+    NSURL *url = [NSURL URLWithString:@"https://www.hackerschool.com"];
+    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:url];
+    
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:_usernameField.text, @"email", _passwordField.text, @"password", nil];
+    [httpClient postPath:@"/sessions" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        Parser *parser = [[Parser alloc] init];
+        [parser parseData:responseObject];
+        [self performSegueWithIdentifier:@"loginSegue" sender:nil];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"[httpClientError error]: %@", error);
+    }];
 }
 
 #pragma - mark TextField Delegate
@@ -67,23 +76,6 @@
 
 #pragma - mark WebView Delegate
 
-- (void)webViewDidStartLoad:(UIWebView *)webView {
-    NSLog(@"site started loading");
-    [self blockUI];
-}
-
-- (void)webViewDidFinishLoad:(UIWebView *)webView {
-    NSLog(@"site finished loading");
-    [self unblockUI];
-    NSString *currentURL = webView.request.URL.absoluteString;
-    if ([currentURL isEqualToString:@"https://www.hackerschool.com/sessions"]) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Login error" message:@"Did you forget your username or password?" delegate:self cancelButtonTitle:@"Let me try again" otherButtonTitles:nil, nil];
-        [alert show];
-    } else if ([currentURL isEqualToString:@"https://www.hackerschool.com/private"]) {
-        [self performSegueWithIdentifier:@"loginSegue" sender:self];
-    }
-}
-
 - (void)blockUI {
     _blockingView = [[BlockingViewController alloc] initWithMessage:@"Loading Hacker School Data.."];
     _blockingView.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame));
@@ -101,10 +93,6 @@
     NSArray *batches = [objectContext executeFetchRequest:dataCheck error:nil];
     if ([batches count] > 0) {
         [self performSegueWithIdentifier:@"loginSegue" sender:self];
-    } else {
-        NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.hackerschool.com/login"] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60];
-        _webView.scalesPageToFit = YES;
-        [_webView loadRequest:request];
     }
 }
 

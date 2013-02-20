@@ -10,8 +10,7 @@
     return self;
 }
 
-- (void)fetchData {
-    NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://www.hackerschool.com/private"]];
+- (void)parseData:(NSData *)data {
     TFHpple *doc = [[TFHpple alloc] initWithHTMLData:data];
     AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
     NSManagedObjectContext *objectContext = [appDelegate managedObjectContext];

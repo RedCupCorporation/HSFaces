@@ -12,8 +12,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    Parser *parser = [[Parser alloc] init];
-    [parser fetchData];
     AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
     _objectContext = [appDelegate managedObjectContext];
     [self setupView];

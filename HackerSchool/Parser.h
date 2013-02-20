@@ -4,6 +4,6 @@
 
 @interface Parser : NSObject
 
-- (void)fetchData;
+- (void)parseData:(NSData *)data;
 
 @end
