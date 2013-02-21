@@ -40,6 +40,7 @@
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Login Error" message:@"Your password or email was incorrect." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
             [alert show];
         }
+
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         [self unblockUI];
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Network Error" message:@"There was an error connecting to hacker school. Check your connection and try again." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
