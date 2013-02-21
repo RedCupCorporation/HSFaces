@@ -70,6 +70,14 @@
     return _fetchedResultsController;
 }
 
+#pragma - mark ScrollViewDelegate
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    unsigned int alp = _tableView.contentOffset.y - -90;
+    float alpha = 1-(alp / 25.0);
+    _resetButton.alpha = alpha;
+    _tableBackgroundImageView.alpha = alpha;
+}
 
 #pragma - mark TableViewDelegate Methods
 
