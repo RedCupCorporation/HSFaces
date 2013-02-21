@@ -22,8 +22,8 @@
 }
 
 - (IBAction)login:(id)sender {
-    [self textFieldDidEndEditing:_passwordField];
-    [self textFieldDidEndEditing:_usernameField];
+    [_usernameField resignFirstResponder];
+    [_passwordField resignFirstResponder];
 
     [self blockUI];
     NSURL *url = [NSURL URLWithString:@"https://www.hackerschool.com"];
