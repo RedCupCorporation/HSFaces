@@ -3,6 +3,11 @@
 #import "Person.h"
 #import <AFNetworking.h>
 
+NSString *const HIGH_SCORE_MESSAGE = @"Nice Work!";
+NSString *const MEDIUM_SCORE_MESSAGE = @"Your getting there!";
+NSString *const LOW_SCORE_MESSAGE = @"I think you need a little more practice.";
+NSString *const VERY_LOW_SCORE_MESSAGE = @"Uh..oh I hope your new here.";
+
 @interface DisplayViewController ()
 
 @end
@@ -52,7 +57,18 @@
     _guessTextbox.text = @"";
     [self textChanged];
     if ([_students count] == 0) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:@"You scored %d out of %d", _score, _guesses] message:@"Nice Work!" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+        NSString *message;
+        float percentage = (float)_score / _guesses;
+        if (percentage > 0.95) {
+            message = HIGH_SCORE_MESSAGE;
+        } else if (percentage > 0.75) {
+            message = MEDIUM_SCORE_MESSAGE;
+        } else if (percentage > 0.30) {
+            message = LOW_SCORE_MESSAGE;
+        } else {
+            message = VERY_LOW_SCORE_MESSAGE;
+        }
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:@"You scored %d out of %d", _score, _guesses] message:message delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
         [alert show];
         return;
     }
