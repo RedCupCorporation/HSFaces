@@ -2,7 +2,7 @@
 #import "Batch.h"
 #import "Person.h"
 
-@interface DisplayViewController : UIViewController <UITextFieldDelegate, UIAlertViewDelegate>
+@interface DisplayViewController : UIViewController <UIAlertViewDelegate, UITextFieldDelegate>
 @property (nonatomic) int score;
 @property (nonatomic) int guesses;
 @property (strong, nonatomic) NSMutableArray *students;

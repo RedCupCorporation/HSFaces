@@ -2,7 +2,6 @@
 #import "AppDelegate.h"
 #import "Person.h"
 #import <AFNetworking.h>
-#import <QuartzCore/QuartzCore.h>
 
 @interface DisplayViewController ()
 
@@ -16,8 +15,8 @@
     _students = [[_batch.students allObjects] mutableCopy];
     _score = 0;
     _guesses = 0;
-    _guessTextbox.autocorrectionType = UITextAutocorrectionTypeNo;
     _guessButton.enabled = NO;
+    _guessTextbox.delegate = self;
     [_guessTextbox addTarget:self action:@selector(textChanged) forControlEvents:UIControlEventAllEditingEvents];
     [_guessTextbox becomeFirstResponder];
     [self newStudentImage];
@@ -153,6 +152,12 @@
 
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
     [self.navigationController  popViewControllerAnimated:YES];
+}
+
+#pragma mark - UITextFieldDelegate
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    return NO;
 }
 
 @end

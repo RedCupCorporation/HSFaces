@@ -172,7 +172,7 @@
                                         <rect key="frame" x="9" y="6" width="233" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" enablesReturnKeyAutomatically="YES"/>
                                     </textField>
                                 </subviews>
                                 <color key="backgroundColor" red="0.86154735331632648" green="0.86154735331632648" blue="0.86154735331632648" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
