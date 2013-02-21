@@ -7,6 +7,7 @@
 @property (nonatomic) int guesses;
 @property (strong, nonatomic) NSMutableArray *students;
 
+@property (strong, nonatomic) UIImageView *correctImage;
 @property (strong, nonatomic) UILabel *warning;
 @property (strong, nonatomic) IBOutlet UIImageView *imageView;
 @property (strong, nonatomic) IBOutlet UITextField *guessTextbox;

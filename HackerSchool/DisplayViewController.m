@@ -2,6 +2,7 @@
 #import "AppDelegate.h"
 #import "Person.h"
 #import <AFNetworking.h>
+#import <QuartzCore/QuartzCore.h>
 
 @interface DisplayViewController ()
 
@@ -33,18 +34,20 @@
 
 - (void)guessSequence {
     if ([self guessName]) {
+        [self displayCorrect];
         _score++;
         _guesses++;
-        [self nextGuess];
     } else {
         _guesses++;
         [self displayError];
         _guessButton.enabled = NO;
-        [self performSelector:@selector(removeError) withObject:nil afterDelay:1.0];
     }
+    [self performSelector:@selector(nextGuess) withObject:nil afterDelay:1.0];
 }
 
 - (void)nextGuess {
+    [_warning removeFromSuperview];
+    [_correctImage removeFromSuperview];
     [self removeStudent];
     _guessTextbox.text = @"";
     [self textChanged];
@@ -69,11 +72,17 @@
     }
 }
 
-- (void)removeError {
-    _imageView.alpha = 1.0;
-    [_warning removeFromSuperview];
-    _guessButton.enabled = YES;
-    [self nextGuess];
+- (void)displayCorrect {
+    _correctImage = [[UIImageView alloc] initWithFrame:CGRectMake(50, 20, 200, 200)];
+    _correctImage.image = [UIImage imageNamed:@"correct@2x.png"];
+    [self.view addSubview:_correctImage];
+    [UIView animateWithDuration:0.15 animations:^{
+        _correctImage.frame = CGRectInset(_imageView.frame, 10, 10);
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:0.3 animations:^{
+            _correctImage.frame = _imageView.frame;
+        }];
+    }];
 }
 
 - (void)displayError {
@@ -114,10 +123,12 @@
     NSString *requestString = [NSString stringWithFormat:@"http://www.hackerschool.com%@", _currentStudent.image];
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:requestString]];
     UIImage *image = [UIImage imageNamed:@"logo"];
-    _imageView.alpha = 0.3;
+        _imageView.alpha = 0.3;
     [_imageView setImageWithURLRequest:request placeholderImage:image success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
-        _imageView.alpha = 1.0;
-        self.imageView.image = image;
+        [UIView animateWithDuration:0.2 animations:^{
+            _imageView.alpha = 1.0;
+            self.imageView.image = image;
+        }];
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
         _imageView.alpha = 0.3;
     }];

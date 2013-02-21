@@ -40,6 +40,8 @@
 		66F841A516CD8C6900CA98B6 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 66F841A416CD8C6900CA98B6 /* logo.png */; };
 		66F841A916CD8D5700CA98B6 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66F841A816CD8D5700CA98B6 /* LoginViewController.m */; };
 		66F841AC16CDA83700CA98B6 /* DisplayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66F841AB16CDA83600CA98B6 /* DisplayViewController.m */; };
+		66F888C216D57E13002B89D2 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66F888C116D57E13002B89D2 /* QuartzCore.framework */; };
+		66F888C616D59932002B89D2 /* correct@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 66F888C516D59932002B89D2 /* correct@2x.png */; };
 		C0CB9A9267224737B53099AB /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 136E0B5B4F3A44DAB956DCBD /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -101,6 +103,8 @@
 		66F841A816CD8D5700CA98B6 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		66F841AA16CDA83600CA98B6 /* DisplayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DisplayViewController.h; sourceTree = "<group>"; };
 		66F841AB16CDA83600CA98B6 /* DisplayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DisplayViewController.m; sourceTree = "<group>"; };
+		66F888C116D57E13002B89D2 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		66F888C516D59932002B89D2 /* correct@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "correct@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +112,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66F888C216D57E13002B89D2 /* QuartzCore.framework in Frameworks */,
 				66F841A016CC567F00CA98B6 /* CoreData.framework in Frameworks */,
 				6629699216CC20090058F30A /* UIKit.framework in Frameworks */,
 				6629699416CC20090058F30A /* Foundation.framework in Frameworks */,
@@ -132,6 +137,7 @@
 		6629698516CC20090058F30A = {
 			isa = PBXGroup;
 			children = (
+				66F888C116D57E13002B89D2 /* QuartzCore.framework */,
 				66F8419F16CC567F00CA98B6 /* CoreData.framework */,
 				6629699716CC20090058F30A /* HackerSchool */,
 				662969BB16CC20090058F30A /* HackerSchoolTests */,
@@ -225,6 +231,7 @@
 		66F841A616CD8C7000CA98B6 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				66F888C516D59932002B89D2 /* correct@2x.png */,
 				66A6047116D440650074E792 /* Icon.png */,
 				66A6046F16D4400A0074E792 /* Icon@2x.png */,
 				66A6046B16D43D930074E792 /* syncSelected@2x.png */,
@@ -324,6 +331,7 @@
 				66A6046C16D43D930074E792 /* syncSelected@2x.png in Resources */,
 				66A6047016D4400A0074E792 /* Icon@2x.png in Resources */,
 				66A6047216D440650074E792 /* Icon.png in Resources */,
+				66F888C616D59932002B89D2 /* correct@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -483,7 +491,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "D0D576CC-FE06-46F0-AB7D-1EF48EEBF87D";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "8870594E-502B-4319-8447-0E245C9B3C4E";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
