@@ -17,6 +17,7 @@ NSString *const VERY_LOW_SCORE_MESSAGE = @"Uh..oh I hope your new here.";
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupViews];
+    _objectContext = [(AppDelegate *)[[UIApplication sharedApplication] delegate] managedObjectContext];
     _students = [[_batch.students allObjects] mutableCopy];
     _score = 0;
     _guesses = 0;
@@ -136,11 +137,26 @@ NSString *const VERY_LOW_SCORE_MESSAGE = @"Uh..oh I hope your new here.";
 
     _currentStudent = [_students objectAtIndex:num];
     _lastGuess = num;
-    NSString *requestString = [NSString stringWithFormat:@"http://www.hackerschool.com%@", _currentStudent.image];
+
+    if (_currentStudent.image) {
+        UIImage *image = [UIImage imageWithData:_currentStudent.image];
+        _imageView.image = image;
+    } else {
+        [self getWebImage];
+    }
+}
+
+- (void)getWebImage {
+    NSString *requestString = [NSString stringWithFormat:@"http://www.hackerschool.com%@", _currentStudent.imageUrl];
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:requestString]];
     UIImage *image = [UIImage imageNamed:@"logo"];
-        _imageView.alpha = 0.3;
+    _imageView.alpha = 0.3;
     [_imageView setImageWithURLRequest:request placeholderImage:image success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSData *imageData = UIImageJPEGRepresentation(image, 1.0);
+            _currentStudent.image = imageData;
+            [_objectContext save:nil];
+        });
         [UIView animateWithDuration:0.2 animations:^{
             _imageView.alpha = 1.0;
             self.imageView.image = image;

@@ -6,12 +6,13 @@
         <relationship name="students" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Person" inverseName="batch" inverseEntity="Person" syncable="YES"/>
     </entity>
     <entity name="Person" representedClassName="Person" syncable="YES">
-        <attribute name="image" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="image" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="imageUrl" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="batch" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Batch" inverseName="students" inverseEntity="Batch" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Person" positionX="160" positionY="192" width="128" height="90"/>
         <element name="Batch" positionX="-182" positionY="189" width="128" height="90"/>
+        <element name="Person" positionX="160" positionY="192" width="128" height="105"/>
     </elements>
 </model>

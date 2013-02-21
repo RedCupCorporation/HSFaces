@@ -5,6 +5,7 @@
 
 @dynamic name;
 @dynamic image;
+@dynamic imageUrl;
 @dynamic batch;
 
 @end

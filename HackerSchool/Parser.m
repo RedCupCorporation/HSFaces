@@ -37,7 +37,7 @@
             NSString *name = [[[peopleFromBatch objectAtIndex:i] firstChild] content];
             Person *newPerson = [NSEntityDescription insertNewObjectForEntityForName:@"Person" inManagedObjectContext:objectContext];
             [newPerson setName:name];
-            [newPerson setImage:image];
+            [newPerson setImageUrl:image];
             [newPerson setBatch:batch];
             NSError *error = nil;
             [objectContext save:&error];

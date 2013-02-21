@@ -13,6 +13,7 @@
 @property (strong, nonatomic) IBOutlet UITextField *guessTextbox;
 @property (strong, nonatomic) IBOutlet UIButton *guessButton;
 @property (strong, nonatomic) IBOutlet UIView *submitFormView;
+@property (strong, nonatomic) NSManagedObjectContext *objectContext;
 
 @property (strong, nonatomic) Batch *batch;
 @property (strong, nonatomic) Person *currentStudent;

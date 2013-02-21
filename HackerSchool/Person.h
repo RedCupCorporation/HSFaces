@@ -6,7 +6,9 @@
 @interface Person : NSManagedObject
 
 @property (nonatomic, retain) NSString * name;
-@property (nonatomic, retain) NSString * image;
+@property (nonatomic, retain) NSData * image;
+@property (nonatomic, retain) NSString * imageUrl;
 @property (nonatomic, retain) Batch * batch;
+
 
 @end
