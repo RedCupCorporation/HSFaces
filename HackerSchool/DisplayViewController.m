@@ -4,7 +4,7 @@
 #import <AFNetworking.h>
 
 NSString *const HIGH_SCORE_MESSAGE = @"Nice Work!";
-NSString *const MEDIUM_SCORE_MESSAGE = @"Your getting there!";
+NSString *const MEDIUM_SCORE_MESSAGE = @"You're getting there!";
 NSString *const LOW_SCORE_MESSAGE = @"I think you need a little more practice.";
 NSString *const VERY_LOW_SCORE_MESSAGE = @"Uh..oh I hope your new here.";
 
