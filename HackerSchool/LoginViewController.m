@@ -63,7 +63,6 @@
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField {
-    [textField resignFirstResponder];
     if (self.logoImage.frame.origin.y > 4) {
         [UIView animateWithDuration:0.3 animations:^{
             self.logoImage.alpha = 1.0;
