@@ -14,7 +14,7 @@ const int kTableViewContentInset = 90;
 - (void)viewDidLoad {
     [super viewDidLoad];
     AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
-    _objectContext = [appDelegate managedObjectContext];
+    self.objectContext = [appDelegate managedObjectContext];
     [self setupView];
     [self.navigationItem setHidesBackButton:YES];
     self.title = @"Batches";
@@ -28,9 +28,9 @@ const int kTableViewContentInset = 90;
 - (void)setupView {
     int height = [[UIScreen mainScreen] bounds].size.height;
     int width = [[UIScreen mainScreen] bounds].size.width;
-    _tableView.frame = CGRectMake(0, 0, width, height);
-    _tableView.contentInset = UIEdgeInsetsMake(kTableViewContentInset, 0, 0, 0);
-    _tableView.backgroundView = _tableBackgroundImageView;
+    self.tableView.frame = CGRectMake(0, 0, width, height);
+    self.tableView.contentInset = UIEdgeInsetsMake(kTableViewContentInset, 0, 0, 0);
+    self.tableView.backgroundView = self.tableBackgroundImageView;
 }
 
 - (void)reloadtable:(id)sender {
@@ -39,24 +39,24 @@ const int kTableViewContentInset = 90;
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    Batch *batch = [_fetchedResultsController objectAtIndexPath:[_tableView indexPathForSelectedRow]];
+    Batch *batch = [self.fetchedResultsController objectAtIndexPath:[self.tableView indexPathForSelectedRow]];
     [segue.destinationViewController setBatch:batch];
 }
 
 #pragma - mark FetchResultsController Delegate
 
 - (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
-    [_tableView beginUpdates];
+    [self.tableView beginUpdates];
 }
 
 - (NSFetchedResultsController *)fetchedResultsController {
 
-    if (_fetchedResultsController != nil) {
-        return _fetchedResultsController;
+    if (self.fetchedResultsController != nil) {
+        return self.fetchedResultsController;
     }
 
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Batch" inManagedObjectContext:_objectContext];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Batch" inManagedObjectContext:self.objectContext];
     [fetchRequest setEntity:entity];
 
     NSSortDescriptor *sort = [[NSSortDescriptor alloc] initWithKey:@"idName" ascending:NO];
@@ -64,21 +64,21 @@ const int kTableViewContentInset = 90;
 
     [fetchRequest setFetchBatchSize:20];
 
-    NSFetchedResultsController *theFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:_objectContext sectionNameKeyPath:nil cacheName:nil];
+    NSFetchedResultsController *theFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.objectContext sectionNameKeyPath:nil cacheName:nil];
     self.fetchedResultsController = theFetchedResultsController;
     self.fetchedResultsController.delegate = self;
     
-    return _fetchedResultsController;
+    return self.fetchedResultsController;
 }
 
 #pragma - mark ScrollViewDelegate
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     // Hide resetButton when tableview is scrolled above it.
-    int alp = _tableView.contentOffset.y - -kTableViewContentInset;
+    int alp = self.tableView.contentOffset.y - -kTableViewContentInset;
     float alpha = 1-(alp / 25.0);
-    _resetButton.alpha = alpha;
-    _tableBackgroundImageView.alpha = alpha;
+    self.resetButton.alpha = alpha;
+    self.tableBackgroundImageView.alpha = alpha;
 }
 
 #pragma - mark TableViewDelegate Methods

@@ -21,11 +21,11 @@
 }
 
 - (UIActivityIndicatorView *)spinner {
-    if (!_spinner) {
-        _spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-        [_spinner startAnimating];
+    if (!self.spinner) {
+        self.spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+        [self.spinner startAnimating];
     }
-    return _spinner;
+    return self.spinner;
 }
 
 - (void)drawRect:(CGRect)rect {
@@ -33,14 +33,14 @@
 }
 
 - (UILabel *)messageLabel {
-    if (!_messageLabel) {
-        _messageLabel = [[UILabel alloc] init];
-        _messageLabel.backgroundColor = [UIColor clearColor];
-        _messageLabel.font = [UIFont systemFontOfSize:18];
-        _messageLabel.textAlignment = NSTextAlignmentCenter;
-        _messageLabel.textColor = [UIColor grayColor];
+    if (!self.messageLabel) {
+        self.messageLabel = [[UILabel alloc] init];
+        self.messageLabel.backgroundColor = [UIColor clearColor];
+        self.messageLabel.font = [UIFont systemFontOfSize:18];
+        self.messageLabel.textAlignment = NSTextAlignmentCenter;
+        self.messageLabel.textColor = [UIColor grayColor];
     }
-    return _messageLabel;
+    return self.messageLabel;
 }
 
 - (void)layoutSubviews {
@@ -54,7 +54,7 @@
     [self.window makeKeyAndVisible];
     [self.window addSubview:self];
     [self addSubview:self.spinner];
-    self.messageLabel.text = _message;
+    self.messageLabel.text = self.message;
     [self addSubview:self.messageLabel];
     [UIView animateWithDuration:0.2 animations:^{
         self.alpha = 1.0;
