@@ -9,6 +9,7 @@
 @end
 
 @implementation BatchViewController
+const int kTableViewContentInset = 90;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -28,7 +29,7 @@
     int height = [[UIScreen mainScreen] bounds].size.height;
     int width = [[UIScreen mainScreen] bounds].size.width;
     _tableView.frame = CGRectMake(0, 0, width, height);
-    _tableView.contentInset = UIEdgeInsetsMake(90, 0, 20, 0);
+    _tableView.contentInset = UIEdgeInsetsMake(kTableViewContentInset, 0, 0, 0);
     _tableView.backgroundView = _tableBackgroundImageView;
 }
 
@@ -73,7 +74,8 @@
 #pragma - mark ScrollViewDelegate
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    unsigned int alp = _tableView.contentOffset.y - -90;
+    // Hide resetButton when tableview is scrolled above it.
+    int alp = _tableView.contentOffset.y - -kTableViewContentInset;
     float alpha = 1-(alp / 25.0);
     _resetButton.alpha = alpha;
     _tableBackgroundImageView.alpha = alpha;
