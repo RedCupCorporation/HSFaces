@@ -12,11 +12,11 @@
 @implementation LoginViewController
 
 - (void)viewDidLoad {
-    [self checkForData];
     [super viewDidLoad];
-    _usernameField.delegate = self;
-    _passwordField.delegate = self;
-    _sitesLoaded = 0;
+    [self checkForData];
+    self.usernameField.delegate = self;
+    self.passwordField.delegate = self;
+    self.sitesLoaded = 0;
     self.navigationController.navigationBar.tintColor = [UIColor blackColor];
     self.title = @"Hacker School Faces";
 }
