@@ -21,11 +21,11 @@
 }
 
 - (UIActivityIndicatorView *)spinner {
-    if (!self.spinner) {
+    if (!_spinner) {
         self.spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
         [self.spinner startAnimating];
     }
-    return self.spinner;
+    return _spinner;
 }
 
 - (void)drawRect:(CGRect)rect {
@@ -33,14 +33,14 @@
 }
 
 - (UILabel *)messageLabel {
-    if (!self.messageLabel) {
-        self.messageLabel = [[UILabel alloc] init];
-        self.messageLabel.backgroundColor = [UIColor clearColor];
-        self.messageLabel.font = [UIFont systemFontOfSize:18];
-        self.messageLabel.textAlignment = NSTextAlignmentCenter;
-        self.messageLabel.textColor = [UIColor grayColor];
+    if (!_messageLabel) {
+        _messageLabel = [[UILabel alloc] init];
+        _messageLabel.backgroundColor = [UIColor clearColor];
+        _messageLabel.font = [UIFont systemFontOfSize:18];
+        _messageLabel.textAlignment = NSTextAlignmentCenter;
+        _messageLabel.textColor = [UIColor grayColor];
     }
-    return self.messageLabel;
+    return _messageLabel;
 }
 
 - (void)layoutSubviews {
