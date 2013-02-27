@@ -62,7 +62,7 @@
                     <navigationItem key="navigationItem" id="SIR-sJ-I1C"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
-                        <outlet property="loginButtun" destination="Goy-0A-kKb" id="Wfz-V2-KqU"/>
+                        <outlet property="loginButton" destination="Goy-0A-kKb" id="k5A-Iq-Hqg"/>
                         <outlet property="logoImage" destination="QFv-FW-6vp" id="e5e-Dz-Tcw"/>
                         <outlet property="passwordField" destination="Kqm-ml-TaC" id="6Bp-9m-QDo"/>
                         <outlet property="usernameField" destination="e03-W6-ULc" id="eIl-hd-jsE"/>

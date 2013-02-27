@@ -55,7 +55,7 @@
         [UIView animateWithDuration:0.3 animations:^{
             self.logoImage.alpha = 0;
             self.logoImage.frame = CGRectOffset(self.logoImage.frame, 0, -100);
-            self.loginButtun.frame = CGRectOffset(self.loginButtun.frame, 0, -90);
+            self.loginButton.frame = CGRectOffset(self.loginButton.frame, 0, -90);
             self.usernameField.frame = CGRectOffset(self.usernameField.frame, 0, -90);
             self.passwordField.frame = CGRectOffset(self.passwordField.frame, 0, -90);
         }];
@@ -67,7 +67,7 @@
         [UIView animateWithDuration:0.3 animations:^{
             self.logoImage.alpha = 1.0;
             self.logoImage.frame = CGRectOffset(self.logoImage.frame, 0, 100);
-            self.loginButtun.frame = CGRectOffset(self.loginButtun.frame, 0, 90);
+            self.loginButton.frame = CGRectOffset(self.loginButton.frame, 0, 90);
             self.usernameField.frame = CGRectOffset(self.usernameField.frame, 0, 90);
             self.passwordField.frame = CGRectOffset(self.passwordField.frame, 0, 90);
         }];
