@@ -11,6 +11,15 @@
 
 @implementation LoginViewController
 
+- (BlockingViewController *)blockingView
+{
+    if (!_blockingView) {
+        _blockingView = [[BlockingViewController alloc] initWithMessage:@"Loading Hacker School Data.."];
+        _blockingView.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame));
+    }
+    return _blockingView;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self checkForData];
@@ -80,8 +89,6 @@
 }
 
 - (void)blockUI {
-    self.blockingView = [[BlockingViewController alloc] initWithMessage:@"Loading Hacker School Data.."];
-    self.blockingView.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame));
     [self.view addSubview:self.blockingView];
     [self.blockingView show];
 }
